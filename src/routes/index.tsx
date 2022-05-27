@@ -1,17 +1,18 @@
 import Link from '@mui/material/Link';
 import { useState, useEffect } from 'react';
-import { isNamedExports } from 'typescript';
 import Grid from '@mui/material/Grid';
+import CardQuestionary from '../components/CardQuestionary';
+import Typography from '@mui/material/Typography';
+import { grey, pink } from '@mui/material/colors';
 
 async function fetchData(setIsLoading: any, setData: any) {
   try {
     const headers = { 'Content-Type': 'application/json' };
-    const response = await fetch('https://run.mocky.io/v3/0ba7658d-a566-4b29-889d-935fb5071492', {
+    const response = await fetch('https://run.mocky.io/v3/af371364-86cc-47b5-bbdf-53b974908310', {
       headers
     });
     if (response) {
       const { result } = await response.json();
-      console.log({ result });
       setData(result);
       setIsLoading(false);
     }
@@ -23,7 +24,6 @@ async function fetchData(setIsLoading: any, setData: any) {
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([] as any[]);
-
   useEffect(() => {
     fetchData(setIsLoading, setData);
   }, []);
@@ -40,20 +40,27 @@ function Home() {
     return (
       <>
         <header>
-          <h2>INICIO</h2>
+          <Typography
+            variant="h4"
+            gutterBottom
+            component="div"
+            align="center"
+            sx={{ color: grey['A100'] }}>
+            CUESTIONARIOS
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom component="div" sx={{ color: grey['A100'] }}>
+            Selecciona el que desees responder
+          </Typography>
         </header>
 
         <main>
-          <Grid spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          <Grid container spacing={{ xs: 1, sm: 2, lg: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
             {data.map((item: any, index: number) => (
-              <Link href="#" color="inherit" underline="none" key={index}>
-                <Grid item xs={2} sm={4} md={4} key={index}>
-                  <h3>{item.title}</h3>
-                  <figure>
-                    <img src={item.image} alt={item.name} />
-                  </figure>
-                </Grid>
-              </Link>
+              <Grid item xs={1} sm={4} md={4} key={index}>
+                <Link href="#" color="inherit" underline="none">
+                  <CardQuestionary image={item.image} title={item.title} />
+                </Link>
+              </Grid>
             ))}
           </Grid>
         </main>
