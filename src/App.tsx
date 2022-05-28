@@ -1,18 +1,14 @@
-import React from 'react';
 import './assets/css/index.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './routes';
+import Questionary from './routes/questionary';
 
 function App() {
-  const _openModal = () => {
-    console.log('holi');
-  };
-
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/routes/questionary/:questionaryId" />
+        <Route path="/questionary/:id" element={<Questionary />} />
       </Routes>
     </div>
   );

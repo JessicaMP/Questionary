@@ -58,7 +58,7 @@ function Home() {
             {data.map((item: any, index: number) => (
               <Grid item xs={1} sm={4} md={4} key={index}>
                 <Link href="#" color="inherit" underline="none">
-                  <CardQuestionary image={item.image} title={item.title} />
+                  <CardQuestionary image={item.image} title={item.title} id={index + 1} />
                 </Link>
               </Grid>
             ))}
