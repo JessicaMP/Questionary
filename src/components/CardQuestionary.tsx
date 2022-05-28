@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { grey, pink } from '@mui/material/colors';
 // import { Link } from 'react-router-dom';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 
 interface Props {
   title: string;
@@ -24,11 +24,14 @@ function CardQuestionary(prop: { title: string; image: string; id: number }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href={`questionary/${prop.id}`} underline="none">
-          <Button size="small" sx={{ background: pink[900], color: grey['A100'] }}>
-            Ver
-          </Button>
-        </Link>
+        {/* <Link href={`questionary/${prop.id}`} underline="none"> */}
+        <Button
+          href={`questionary/${prop.id}`}
+          size="small"
+          sx={{ background: pink[900], color: grey['A100'] }}>
+          Ver
+        </Button>
+        {/* </Link> */}
       </CardActions>
     </Card>
   );
